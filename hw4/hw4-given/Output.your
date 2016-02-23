@@ -1,0 +1,27 @@
+
+                    TEST-Cycle
+
+testing:  (CYCLE 1 NIL)
+value:    NIL
+
+testing:  (CYCLE 2 '(A B C D E F))
+value:    (C D E F A B)
+
+testing:  (CYCLE 3 '(1 2 3 4 5))
+value:    (4 5 1 2 3)
+
+testing:  (CYCLE 4 '(I J 1 2 K L))
+value:    (K L I J 1 2)
+
+testing:  (CYCLE 5 '(1 2 3 4))
+value:    (2 3 4 1)
+
+testing:  (CYCLE 6 '(6 5 4 3 2 1))
+value:    (6 5 4 3 2 1)
+
+testing:  (CYCLE 0 '(6 5 4 3 2 1))
+value:    (6 5 4 3 2 1)
+
+testing:  (CYCLE 3 '(6 5 4 3 2 1))
+value:    (3 2 1 6 5 4)
+
