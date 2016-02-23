@@ -82,3 +82,47 @@
 	newList
 	;(print newList)
 )
+
+
+(defun range(myList)
+(cond 
+
+
+	((null myList)
+		myList
+	)
+
+	(t
+		(setq smallest (car myList))
+		(setq largest (car mylist))
+		(setq counter 0)
+		(setq mySum 0)
+		(setq newList '())
+
+
+		(doList (element myList)
+
+			(if (< element smallest)
+				(setf smallest element)
+
+			)
+
+			(if (> element largest)
+				(setf largest element)
+
+			)
+			(setf counter (+ counter 1))
+			(setf mySum (+ mySum element))
+		)
+
+		(setq myFraction (/ mySum counter))
+		(setf newList (append newList (list smallest) (list myFraction) (list largest)))
+
+		;print newList)
+
+		newList
+
+	)
+
+)
+)
