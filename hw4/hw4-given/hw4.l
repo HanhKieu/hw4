@@ -14,26 +14,50 @@
 )
 
 (defun split-list ( delim myList )   ;delim = delimeter
-	(setq currentList '())
+	(setq tempList '())
 	(setq newList '())
 	(setq myListLength (list-length myList))
 	(setq i 1)
+	(setq ifDelimiterPresent 0)
 	(dotimes (i myListLength)
 		(setf var (nth i myList))
 		(cond
+			( (and (= i (- myListLength 1)) (eq var delim))
+				(setf newList (append newList (list tempList)))
+				(setf tempList '())
+				(setf var (nth i myList))
+				(setf ifDelimiterPresent 1)
+
+			) ;if(i = 8) and var===delim)
+			( (and (= i 0) (eq var delim))
+				(setf tempList '())
+				(if (not (eq i (- myListLength 1)))
+					(setf i (+ i 1))
+					)
+				(setf var (nth i myList))
+				(setf ifDelimiterPresent 1)
+			) ;if((i = 0) and var===delim)
+		
 			((eq var delim) 
-				(setf newList (append newList currentList))
-				(setf currentList '())
+				(setf newList (append newList (list tempList))) ;append our temporary list to our newLIst
+				(setf tempList '())
 				(setf i (+ i 1))
 				(setf var (nth i myList))
-
+				(setf ifDelimiterPresent 1)
 			)
-
-			(t(print "NOO"))
 			
 		)
-		(setf currentList (append currentList (list var)))
+		(setf tempList (append tempList (list var)))
 	)
+
+	(if (not (eq tempList NIL))
+	(setf newList (append newList (list tempList))) ;when you're out of the function append whats remaining in our tempList
+	)
+	(cond
+		((= ifDelimiterPresent 0)
+			(setf newList myList)
+		)
+	);if no delimter in myList then return original list
 
 	(print newList)
 )
