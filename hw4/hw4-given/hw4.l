@@ -73,11 +73,12 @@
 	(if (not (eq tempList NIL))
 		(setf newList (append newList (list tempList))) ;when you're out of the function append whats remaining in our tempList
 	)
-	(cond
-		((= ifDelimiterPresent 0)
-			(setf newList myList)
-		)
-	);if no delimter in myList then return original list
-
-	(print newList)
+	; (cond
+	; 	((= ifDelimiterPresent 0)
+	; 		(setf newList myList)
+	; 	)
+	; );if no delimter in myList then return original list
+	
+	newList
+	;(print newList)
 )
