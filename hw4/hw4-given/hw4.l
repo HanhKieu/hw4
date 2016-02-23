@@ -126,3 +126,23 @@
 
 )
 )
+
+(defun pivot(n myList)
+
+	(setq firstList '())
+	(setq secondList '())
+	(setq newList '())
+	(doList (element myList)
+
+		(if (< element n )
+			(setf firstList (append firstList (list element)))
+		); if less than
+		(if (or (> element n) (eq element n))
+			(setf secondList (append secondList (list element)))
+		); if greater than or equal to
+
+
+	)
+	(setf newList (append newList (list firstList) (list secondList)))
+	newList
+)
