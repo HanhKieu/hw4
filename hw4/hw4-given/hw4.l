@@ -146,3 +146,51 @@
 	(setf newList (append newList (list firstList) (list secondList)))
 	newList
 )
+
+
+(defun quicksort (myList)
+
+	(cond
+		((or (null myList) (eq (list-length myList) 1) )
+			; (if (eq (list-length myList) 1)
+			; (print myList)
+			; )
+			myList
+		) ;if null, return
+
+		(t ;else do quicksort
+			(setq pivot (car myList))
+			(setf myList (cdr myList))
+			(setq firstList '())
+			(setq secondList '())
+			(setq newList '())
+
+
+			(doList (element myList)
+
+				(if (< element pivot )
+					(setf firstList (append firstList (list element)))
+				); if less than
+				(if (or (> element pivot) (eq element pivot))
+					(setf secondList (append secondList (list element)))
+				); if greater than or equal to
+
+			)
+			; (print "list start")
+			; (print secondList)
+			; (print "list end")
+
+			(setf newList (append newList (quicksort firstList) (list pivot) (quicksort secondList)))
+			;(setf newList (append newList (list firstList) (list secondList)))
+			; (print "my New List")\
+			(print " print start ")
+			(print firstList)
+			(print pivot)
+			(print secondList)
+			(print " end start")
+			(print newList)
+			newList
+			
+		)
+	)
+)
