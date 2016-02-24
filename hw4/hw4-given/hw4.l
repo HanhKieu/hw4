@@ -327,3 +327,33 @@
 
 	finalMatrix
   )
+
+(defun search-count ( item searchList )
+    (defvar count 0)
+    (setq count 0)
+    (loop for x in searchList
+        if(eq x item) ;found instance of the item
+            do (setf count (1+ count))
+    )
+
+    count
+)
+
+(defun matrix-transpose (mat)
+    (setq rowSize (list-length (car mat)))
+    (setq colSize (list-length mat))
+    (setq newList '())
+    (setq newMat '())
+    
+    (dotimes(i rowSize)
+    
+        (dotimes(j colSize)
+        
+            (setf newList (append newList (list (nth i (nth j mat)))))
+
+        )
+        (setf newMat (append newMat (list newList)))
+        (setf newList '()) ;reset list 
+    )    
+    newMat
+)
