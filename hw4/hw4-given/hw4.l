@@ -159,11 +159,20 @@
 		) ;if null, return
 
 		(t ;else do quicksort
-			(setq pivot (car myList))
-			(setf myList (cdr myList))
-			(setq firstList '())
-			(setq secondList '())
-			(setq newList '())
+			(let (
+				(pivot (car myList))
+				(myList (cdr myList))
+				(firstList '())
+				(secondList '())
+				(newList '())
+				)
+
+
+			;(setq pivot (car myList))
+			;(setf myList (cdr myList))
+			;(setq firstList '())
+			;(setq secondList '())
+			;(setq newList '())
 
 
 			(doList (element myList)
@@ -183,13 +192,14 @@
 			(setf newList (append newList (quicksort firstList) (list pivot) (quicksort secondList)))
 			;(setf newList (append newList (list firstList) (list secondList)))
 			; (print "my New List")\
-			(print " print start ")
-			(print firstList)
-			(print pivot)
-			(print secondList)
-			(print " end start")
-			(print newList)
+			; (print " print start ")
+			; (print firstList)
+			; (print pivot)
+			; (print secondList)
+			; (print " end start")
+			; (print newList)
 			newList
+			)
 			
 		)
 	)
