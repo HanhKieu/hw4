@@ -268,43 +268,53 @@
 
 (defun matrix-multiply(mat1 mat2)
 
-	(print (set-nth 0 1 mat1 100))
-	; (setq colSize (list-length (car mat1)))
-	; (setq rowSize (list-length mat1))
-	; (setq colSize2 (list-length (car mat2)))
-	; (setq rowSize2 (list-length mat2))
-	; (setq currentSum 0)
-	; (setq currentProduct 0)
+	(setq colSize (list-length (car mat1)))
+	(setq rowSize (list-length mat1))
+	(setq colSize2 (list-length (car mat2)))
+	(setq rowSize2 (list-length mat2))
+	(setq currentSum 0)
+	(setq currentProduct 1)
+	(setq productmMatrix '())
+	(setq currentInitList '())
 
+	(dotimes (i rowSize)
 
-	; (dotimes (i rowSize)
-	; 	(dotimes (k colSize2)
-	; 		(setf currentSum 0)
-	; 		(dotimes (j colSize)
-	; 			(setf currentProduct (+ (nth j (nth i mat1) ) (nth k (nth j mat2) ) ))
-	; 			(setf currentSum (+ currentSum currentProduct))
-	; 		)
-	; 	)
+		(dotimes (j colSize2)
+			(setf currentInitList (append currentInitList'(0)))
+		)
 
-
-	; )
-
-
-
+		(setf productmMatrix (append productmMatrix (list currentInitList)))
+		(setf currentInitList '())
 	)
+
+	(dotimes (i rowSize)
+		(dotimes (k colSize2)
+			(setf currentSum 0)
+			(dotimes (j colSize)
+				(setf currentProduct (* (nth j (nth i mat1) ) (nth k (nth j mat2) ) ))
+				(setf currentSum (+ currentSum currentProduct))
+			)
+			(setf productmMatrix (set-nth i k productmMatrix currentSum))
+		)
+	)
+
+
+	productmMatrix
+
+)
 
 
 
 (defun set-nth(ith jth myList replacement)
 
 	(setq myElement 0)
-	(setq colSize (list-length (car myList)))
-	(setq rowSize (list-length myList))
+	(setq colSize3 (list-length (car myList)))
+	(setq rowSize3 (list-length myList))
 	(setq finalMatrix '())
 	(setq currentlist '())
-	(dotimes (i rowSize)
+	(dotimes (i rowSize3)
 
-		(dotimes (j colSize)
+		(dotimes (j colSize3)
 			(setf myElement (nth j (nth i myList)) )
 			(if (and (eq i ith) (eq j jth))
 				(setf myElement replacement )
