@@ -105,13 +105,13 @@
 			(if (< element smallest)
 				(setf smallest element)
 
-			)
+			);if element smaller, make that new smallest
 
 			(if (> element largest)
 				(setf largest element)
 
-			)
-			(setf counter (+ counter 1))
+			); if element larger make that new largest
+			(setf counter (+ counter 1));increment our counter after everytime
 			(setf mySum (+ mySum element))
 		)
 
@@ -159,7 +159,7 @@
 		) ;if null, return
 
 		(t ;else do quicksort
-			(let (
+			(let ( ;avoids scoping errors compared to setq
 				(pivot (car myList))
 				(myList (cdr myList))
 				(firstList '())
@@ -214,11 +214,11 @@
 		((or (null firstList) (null secondList))
 
 			(eq firstList secondList)
-		)
+		);if its null
 
 		((eq (car firstList) '? )
 			(match (cdr firstList) (cdr secondList))
-		)
+		); if first is question mark
 
 		((and(eq (car firstList) '!) (match (cdr firstList) (cdr secondList)))
 
@@ -236,7 +236,7 @@
 
 	
 
-	)
+	);followed pseudocode from lecture / TA
 
 )
 
@@ -261,9 +261,9 @@
 
 		(setf finalMatrix (append finalMatrix (list currentlist) ))
 		(setf currentlist '())
-	)
+	);for each row and size, calcuate sum and append to new matrix called final MAtrix
 
-	finalMatrix
+	finalMatrix ;return final matrix
 )
 
 (defun matrix-multiply(mat1 mat2)
@@ -285,7 +285,7 @@
 
 		(setf productmMatrix (append productmMatrix (list currentInitList)))
 		(setf currentInitList '())
-	)
+	);initiliaze our product matrix, so no out of bound errors
 
 	(dotimes (i rowSize)
 		(dotimes (k colSize2)
@@ -294,14 +294,14 @@
 				(setf currentProduct (* (nth j (nth i mat1) ) (nth k (nth j mat2) ) ))
 				(setf currentSum (+ currentSum currentProduct))
 			)
-			(setf productmMatrix (set-nth i k productmMatrix currentSum))
+			(setf productmMatrix (set-nth i k productmMatrix currentSum)) ;add to productMatrix
 		)
 	)
 
 
 	productmMatrix
 
-)
+);followed same procedure we did for HW3
 
 
 
@@ -326,14 +326,14 @@
 	)
 
 	finalMatrix
-  )
+  ); this is a helper function that allows us to  set the nth element of a matrix
 
 (defun search-count ( item searchList )
     (defvar count 0)
     (setq count 0)
     (loop for x in searchList
         if(eq x item) ;found instance of the item
-            do (setf count (1+ count))
+            do (setf count (1+ count)) ;increase count
     )
 
     count
@@ -349,11 +349,12 @@
     
         (dotimes(j colSize)
         
-            (setf newList (append newList (list (nth i (nth j mat)))))
+            (setf newList (append newList (list (nth i (nth j mat))))) 
+            ;goes through jth position of ith row, adds to new list
 
         )
-        (setf newMat (append newMat (list newList)))
+        (setf newMat (append newMat (list newList))) ;append list to new matrix
         (setf newList '()) ;reset list 
     )    
-    newMat
+    newMat ;return new Matrix
 )
