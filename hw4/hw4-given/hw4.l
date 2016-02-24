@@ -204,3 +204,38 @@
 		)
 	)
 )
+
+
+(defun match(firstList secondList)
+
+
+	(cond
+
+		((or (null firstList) (null secondList))
+
+			(eq firstList secondList)
+		)
+
+		((eq (car firstList) '? )
+			(match (cdr firstList) (cdr secondList))
+		)
+
+		((and(eq (car firstList) '!) (match (cdr firstList) (cdr secondList)))
+
+			(eq firstList firstList)
+		)
+
+		((eq (car firstList) '!)
+
+			(match firstList (cdr secondList))
+		)
+
+		(t
+			(and (eq (car firstList) (car secondList)) (match (cdr firstList) (cdr secondList)))
+		)
+
+	
+
+	)
+
+)
