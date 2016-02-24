@@ -239,3 +239,29 @@
 	)
 
 )
+
+
+
+(defun matrix-add(mat1 mat2)
+
+	(setq currentSum 0)
+	(setq currentList '())
+	(setq finalMatrix '())
+	(setq colSize (list-length (car mat1)))
+	(setq rowSize (list-length mat1))
+
+	(dotimes (i rowSize)
+
+		(dotimes (j colSize)
+
+			(setf currentSum  (+ (nth j (nth i mat1) ) (nth j (nth i mat2) ) ))
+
+			(setf currentlist (append currentlist (list currentSum)))
+		)
+
+		(setf finalMatrix (append finalMatrix (list currentlist) ))
+		(setf currentlist '())
+	)
+
+	finalMatrix
+)

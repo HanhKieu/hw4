@@ -1,110 +1,26 @@
 
-                    TEST-Match
+                   TEST-Matrix-add
 
-testing:  (MATCH '(THINK ABOUT THAT) '(THINK THAT ABOUT))
+testing:  (MATRIX-ADD 'NIL 'NIL)
 value:    NIL
 
-testing:  (MATCH '(THINK ABOUT THAT) '(THINK ABOUT THAT))
-value:    T
+testing:  (MATRIX-ADD '((0)) '((0)))
+value:    ((0))
 
-testing:  (MATCH '(THINK ABOUT THAT) NIL)
-value:    NIL
+testing:  (MATRIX-ADD '((9)) '((15)))
+value:    ((24))
 
-testing:  (MATCH NIL 'NIL)
-value:    T
+testing:  (MATRIX-ADD '((1 2) (2 1)) '((3 1) (1 3)))
+value:    ((4 3) (3 4))
 
-testing:  (MATCH NIL '(NIL))
-value:    NIL
+testing:  (MATRIX-ADD '((1 2 3) (5 6 7)) '((8 9 10) (11 12 13)))
+value:    ((9 11 13) (16 18 20))
 
-testing:  (MATCH '(NIL NIL) '(NIL))
-value:    NIL
+testing:  (MATRIX-ADD '((1 -2 3) (-5 6 7)) '((-8 9 -10) (-11 12 -13)))
+value:    ((-7 7 -7) (-16 18 -6))
 
-testing:  (MATCH '(NIL NIL) '(NIL NIL))
-value:    T
+testing:  (MATRIX-ADD '((1) (-5) (6) (7)) '((-8) (9) (-10) (-11)))
+value:    ((-7) (4) (-4) (-4))
 
-testing:  (MATCH '(A A) '(A))
-value:    NIL
-
-testing:  (MATCH '(A ?) '(A A))
-value:    T
-
-testing:  (MATCH '(A NIL ?) '(A NIL NIL))
-value:    T
-
-testing:  (MATCH '(? ? ? ?) '(WHAT TIME IS IT))
-value:    T
-
-testing:  (MATCH '(? ? ? ? ?) '(WHAT TIME IS IT NOW AH))
-value:    NIL
-
-testing:  (MATCH '(? ? ? ? ?) '(WHAT TIME IS IT))
-value:    NIL
-
-testing:  (MATCH '(? COLOR APPLE) '(COLOR COLOR APPLE NIL))
-value:    NIL
-
-testing:  (MATCH '(THIS TABLE IS ROUND ?) '(THIS TABLE IS ROUND OR))
-value:    T
-
-testing:  (MATCH '(THIS !) '(THIS TABLE IS ROUND))
-value:    T
-
-testing:  (MATCH '(THIS ! IS ROUND) '(THIS TABLE IS ROUND))
-value:    T
-
-testing:  (MATCH '(THIS TABLE !) '(THIS THIS TABLE IS ROUND))
-value:    NIL
-
-testing:  (MATCH '(! TABLE IS ROUND) '(THIS TABLE IS ROUND OR))
-value:    NIL
-
-testing:  (MATCH '(! TABLE IS ROUND) '(THIS TABLE))
-value:    NIL
-
-testing:  (MATCH '(THIS ! ROUND) '(THIS TABLE IS ROUND))
-value:    T
-
-testing:  (MATCH '(IS THAT FINE ?) '(THAT FINE TOO))
-value:    NIL
-
-testing:  (MATCH '(!) '(NO MATTER WHAT))
-value:    T
-
-testing:  (MATCH '(! !) '(NO MATTER WHAT))
-value:    T
-
-testing:  (MATCH '(! ! !) '(NO MATTER WHAT))
-value:    T
-
-testing:  (MATCH '(! ! ! !) '(NO MATTER WHAT))
-value:    NIL
-
-testing:  (MATCH '(! BIG ! ?) '(A YELLOW BIG WOODEN BAG))
-value:    T
-
-testing:  (MATCH '(! BIG ! ?) '(A YELLOW BIG BAG))
-value:    NIL
-
-testing:  (MATCH '(! ! ? ! !) '(HOW ARE YOU TODAY AH))
-value:    T
-
-testing:  (MATCH '(! ! ! ! !) '(HOW ARE YOU TODAY))
-value:    NIL
-
-testing:  (MATCH '(! ? ? FUNNY !) '(IS IT REALLY FUNNY OR WHAT))
-value:    T
-
-testing:  (MATCH '(! ? ? FUNNY !) '(IS IT REALLY FUNNY))
-value:    NIL
-
-testing:  (MATCH '(? ? ! ? A) '(A A A A))
-value:    NIL
-
-testing:  (MATCH '(? ? ! ? A !) '(A A A A A NIL))
-value:    T
-
-testing:  (MATCH '(! B ? B A B A ! ? !) '(B B A B A B A B A B A))
-value:    T
-
-testing:  (MATCH '(! B ? A B A B ! ? !) '(B B A B A B A B A B))
-value:    NIL
+testing:  (MATRIX-ADD '((1 -2 3)) '((-8 9 -10)))
+value:    ((-7 7 -7))
